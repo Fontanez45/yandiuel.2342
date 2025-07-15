@@ -1,0 +1,38 @@
+*{
+    margin: 0;
+    padding: 0; 
+    box-sizing:border-box;
+}
+
+body{
+    background-color: aqua;    
+    color:aqua #333; 
+    text-align: center;
+    line-height: 3;
+}
+
+
+.section{
+    padding: 10px 15px;
+}
+
+.hero{
+padding: 50px 20px;
+
+}
+
+.hero h1{
+    font-size: 32px;
+}
+
+.grid{
+display: grid;
+gap: 10px;
+}
+
+.grid div{
+    background-color: rgb(234, 71, 234);
+    padding: 20px;
+    border-radius: 100px;
+
+}
