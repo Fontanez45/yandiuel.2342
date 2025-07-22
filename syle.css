@@ -31,8 +31,26 @@ gap: 10px;
 }
 
 .grid div{
-    background-color: rgb(234, 71, 234);
+    background-color: rgb(57, 177, 201);
     padding: 20px;
     border-radius: 100px;
 
+}
+
+
+@media (max-width: 768px){
+.hero h1{font-size: size 40px;}
+}
+
+@media (max-width:768px){
+    body{background-color: rgb(179, 80, 221);}
+}
+
+.hero-text{
+    display:flex;
+    flex-direction: column;
+}
+
+.hero img {
+    border-radius: 50%;
 }
