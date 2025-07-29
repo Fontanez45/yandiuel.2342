@@ -57,6 +57,8 @@ gap: 10px;
 
 .navbar { 
     background-color: #333;
+    margin: 10px;
+    padding-left: 20px;
 
 }
 
