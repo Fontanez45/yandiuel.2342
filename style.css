@@ -1,0 +1,543 @@
+*{
+    margin: 0;
+    padding: 0; 
+    box-sizing:border-box;
+}
+
+body{
+    background-color: aqua;    
+    color:aqua #333; 
+    text-align: center;
+    line-height: 3;
+}
+
+
+.section{
+    padding: 10px 15px;
+}
+
+.hero{
+padding: 50px 20px;
+
+}
+
+.hero h1{
+    font-size: 32px;
+}
+
+.grid{
+display: grid;
+gap: 10px;
+}
+
+.grid div{
+    background-color: rgb(57, 177, 201);
+    padding: 20px;
+    border-radius: 100px;
+
+}
+
+
+@media (max-width: 768px){
+.hero h1{font-size: size 40px;}
+}
+
+@media (max-width:768px){
+    body{background-color: rgb(179, 80, 221);}
+}
+
+.hero-text{
+    display:flex;
+    flex-direction: column;
+}
+
+.hero img {
+    border-radius: 50%;
+}
+
+.navbar { 
+    background-color: #333;
+    margin: 10px;
+    padding-left: 20px;
+
+}
+
+
+.skill-button {
+  background-color: #2196f3;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  margin: 10px;
+  border-radius: 8px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.skill-button:hover {
+  background-color: #1976d2;
+  transform: scale(1.1);
+}
+
+#loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #00e5ff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  font-family: 'Segoe UI', sans-serif;
+  color: #004d40;
+}
+
+.spinner {
+  border: 8px solid #b2ebf2;
+  border-top: 8px solid #004d40;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20px;
+}
+
+
+/* Loading Screen Styles */
+#loadingScreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #121212;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  animation: fadeOut 2s ease-in-out 4s forwards;
+}
+
+.spinner {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #00bfff;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20px;
+}
+
+.welcomeText {
+  font-size: 2em;
+  opacity: 1;
+  animation: textFade 2s ease-in-out 2s forwards;
+}
+
+/* Animations */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes textFade {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  100% { opacity: 0; visibility: hidden; }
+}
+
+
+
+.skillBox {
+  background-color: #ff6f00;
+  color: white;
+  padding: 20px;
+  border-radius: 12px;
+  font-size: 1em;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  width: 200px;
+  text-align: left;
+}
+
+.skillBox:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 12px rgba(0,0,0,0.2);
+}
+
+.progressBar {
+  background-color: #fff;
+  border-radius: 8px;
+  height: 10px;
+  margin-top: 10px;
+  overflow: hidden;
+}
+
+.progressFill {
+  background-color: #222;
+  height: 100%;
+  border-radius: 8px;
+  transition: width 0.5s ease;
+}
+
+
+
+
+
+/* Default Light Theme */
+body {
+  background-color: #f9f9f9;
+  color: #222;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#darkModeToggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 10px 15px;
+  font-size: 1em;
+  border: none;
+  border-radius: 8px;
+  background-color: #ff6f00;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: background-color 0.3s ease;
+}
+
+#darkModeToggle:hover {
+  background-color: #e65c00;
+}
+
+/* Dark Theme Styles */
+body.dark-mode {
+  background-color: #121212;
+  color: #f0f0f0;
+}
+
+body.dark-mode .skillBox {
+  background-color: #333;
+  color: #f0f0f0;
+}
+
+body.dark-mode .progressFill {
+  background-color: #ff6f00;
+}
+
+body.dark-mode #darkModeToggle {
+  background-color: #444;
+  color: #ff6f00;
+}
+
+#birthdayCountdown {
+  text-align: center;
+  margin: 50px auto;
+}
+
+#countdown {
+  font-size: 2em;
+  margin-top: 20px;
+  color: #333;
+}
+
+
+
+
+#mysteryBox {
+  text-align: center;
+  margin: 50px auto;
+}
+
+#box {
+  background-color: #fff;
+  border: 3px dashed #333;
+  border-radius: 15px;
+  padding: 30px;
+  width: 300px;
+  margin: auto;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+#mysteryBox h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+#surprise {
+  font-size: 1.2em;
+  margin-top: 20px;
+  min-height: 60px;
+  color: #444;
+}
+
+#mysteryBox button {
+  background-color: #ff6f61;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1em;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#mysteryBox button:hover {
+  background-color: #ff3b2e;
+}
+
+
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 999;
+}
+
+
+#cake {
+  text-align: center;
+  font-size: 5em;
+  margin-top: 40px;
+  animation: flicker 1s infinite;
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+header {
+  background-color: #ff6f61;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  font-size: 1.5em;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+
+header {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { background-color: #ff6f61; }
+  50% { background-color: #ff3b2e; }
+  100% { background-color: #ff6f61; }
+}
+
+
+.left-align {
+  text-align: left;
+  padding: 20px;
+}
+
+.left-align > * {
+  margin-bottom: 30px;
+}
+
+
+.section {
+  padding: 20px;
+  margin-bottom: 30px;
+  border-left: 5px solid #ff6f61;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.about-me {
+  background-color: #ffe4e1;
+}
+
+.skills {
+  background-color: #e0ffff;
+}
+
+.birthday-countdown {
+  background-color: #f0fff0;
+}
+
+.mystery-box {
+  background-color: #fffacd;
+}
+
+.contact {
+  background-color: #f5f5dc;
+}
+
+
+.section {
+  padding: 20px;
+  margin: 30px;
+  border-left: 5px solid #ff6f61;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.about-me {
+  background-color: #ffe4e1;
+}
+
+.skills {
+  background-color: #e0ffff;
+}
+
+.birthday-countdown {
+  background-color: #f0fff0;
+}
+
+.mystery-box {
+  background-color: #fffacd;
+}
+
+.contact {
+  background-color: #f5f5dc;
+}
+
+.skillsBox {
+  background-color: #f0f8ff;
+  border: 3px solid #007bff;
+  border-radius: 12px;
+  padding: 30px;
+  max-width: 600px;
+  margin: 40px auto;
+  text-align: center;
+  box-shadow: 0 0 15px rgba(0, 123, 255, 0.2);
+}
+
+.skillsBox h2 {
+  font-size: 28px;
+  margin-bottom: 25px;
+  color: #007bff;
+}
+
+.buttonGrid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+
+.buttonGrid button {
+  padding: 14px 24px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.buttonGrid button:hover {
+  background-color: #0056b3;
+}
+
+
+#funFacts {
+  text-align: center;
+  margin: 40px auto;
+}
+
+#funFacts button {
+  padding: 12px 20px;
+  font-size: 16px;
+  background-color: #ffc107;
+  color: #333;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#funFacts button:hover {
+  background-color: #e0a800;
+}
+
+#funFactBox {
+  margin-top: 20px;
+  font-size: 18px;
+  background-color: #fff8dc;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+
+#funFactBox {
+  display: none;
+  margin-top: 20px;
+  font-size: 18px;
+  background-color: #fff8dc;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  animation: fadeIn 1s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+#jetGame {
+  position: relative;
+  height: 300px;
+  background-color: #e6f7ff;
+  border: 3px solid #007bff;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  overflow: hidden;
+  margin: 40px auto;
+  max-width: 600px;
+}
+
+#jet {
+  position: absolute;
+  width: 80px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+#jet:hover {
+  transform: scale(1.1);
+}
+
+
+.dark-mode {
+  background-color: #121212;
+  color: #f1f1f1;
+}
+
+.dark-mode .navbar {
+  background-color: #222 !important;
+}
+
+.dark-mode a,
+.dark-mode h1,
+.dark-mode h2,
+.dark-mode p {
+  color: #f1f1f1 !important;
+}
+
+
+
+

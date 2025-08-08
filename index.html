@@ -7,30 +7,33 @@
     <title>Yandiel Fontanez</title>
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
-<link href="syle.css" rel="stylesheet">
+<link href="style.css" rel="stylesheet">
 </head>
 
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-sm">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">
-      <p id="greeting"></p>
+    <a class="navbar-brand fw-bold text-warning" href="index.html">
+      ⚾ Yandiel Fontanez
     </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
+
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+          <a class="nav-link text-light" href="index.html">🏠 Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#about">About me</a>
+          <a class="nav-link text-light" href="#about">💪 Skills</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Projects</a>
+          <a class="nav-link text-light" href="reviews.html">🗣️ Testimonial</a>
         </li>
         <li class="nav-item">
-          
+         <a href="booking.html">Book Lesson</a> 
+
         </li>
       </ul>
     </div>
@@ -40,6 +43,10 @@
 
 <!-- This is where most of my code will live -->
  <body>
+  <header>
+  🎉 Happy Birthday, Yandiel! Let’s Celebrate!
+</header>
+
 <section id="home" class="hero">
     <img src="download.jpeg" alt= "Profile Picture">
     <h1>Hi, I am <span class="accent">Yandiel Fontanez</span></h1>
@@ -68,17 +75,301 @@
  
  </section>
 
-<section id="footer"  >
-  Yandiel Fontanez
+
 
 
 </section>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
-<script src="script.js"></script>
-   
+
+<section id="mysteryBox">
+  <h2>🎁 Yandiel's Mystery Box</h2>
+  <div id="box">
+    <button onclick="revealSurprise()">Open the Box</button>
+    <div id="surprise"></div>
+  </div>
+</section>
+
+<section id="birthdayCountdown">
+  <h2>🎂 Countdown to Yandiel's Birthday</h2>
+  <div id="countdown"></div>
+</section>
+
+<script>
+  const birthday = new Date("08/21/2025"); // Change to your birthday
+  const countdownDiv = document.getElementById("countdown");
+
+  function updateCountdown() {
+    const now = new Date();
+    let nextBirthday = new Date(birthday);
+    nextBirthday.setFullYear(now.getFullYear());
+
+    if (nextBirthday < now) {
+      nextBirthday.setFullYear(now.getFullYear() + 1);
+    }
+
+    const diff = nextBirthday - now;
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((diff / (1000 * 60)) % 60);
+    const seconds = Math.floor((diff / 1000) % 60);
+
+    countdownDiv.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+    if (diff <= 0) {
+      countdownDiv.innerHTML = "🎉 It's your birthday! 🎉";
+    }
+  }
+
+  setInterval(updateCountdown, 1000);
+</script>
+
+
+<section id="mysteryBox">
+  <h2>🎁 Birthday Surprise Box</h2>
+  <div id="box">
+    <button onclick="revealSurprise()">Open the Box</button>
+    <div id="surprise"></div>
+  </div>
+</section>
+
+
+
+
+<canvas id="confettiCanvas"></canvas>
+
+<div style="position: fixed; bottom: 20px; right: 20px; z-index: 9999;">
+  <label class="form-check form-switch">
+    <input class="form-check-input" type="checkbox" id="darkModeSwitch">
+    <span id="modeLabel" style="color: #333; font-weight: bold;">🌙 Dark Mode</span>
+  </label>
+</div>
 
 </body>
 
 
+<!-- Loading Screen -->
+<div id="loadingScreen">
+  <div class="spinner"></div>
+  <h1 class="welcomeText">Welcome to Yandiel Website</h1>
+</div>
+
+<!-- Your existing content below -->
+<div id="mainContent" style="display: none;">
+  <!-- Your website content goes here -->
+</div>
+
+
+ 
+<script>
+  const darkSwitch = document.getElementById('darkModeSwitch');
+  const modeLabel = document.getElementById('modeLabel');
+
+  darkSwitch.addEventListener('change', () => {
+    document.body.classList.toggle('dark-mode');
+
+    if (document.body.classList.contains('dark-mode')) {
+      modeLabel.textContent = '🌞 Light Mode';
+    } else {
+      modeLabel.textContent = '🌙 Dark Mode';
+    }
+  });
+</script>
+
+
+
+
+
 </html>
+
+<script>
+  window.onload = function() {
+    setTimeout(() => {
+      document.getElementById('loadingScreen').style.display = 'none';
+      document.getElementById('mainContent').style.display = 'block';
+    }, 6000); // 4s loading + 2s fade
+  };
+</script>
+
+
+
+<section id="skillsSection">
+  <h2>My Skills</h2>
+  <div class="section about-me">
+  <h2>About Me</h2>
+  <img src="https://i.pinimg.com/originals/37/88/1f/37881f61aff21a8935881aac948d4adc.gif" alt="Celebration GIF">
+  <p>I'm a passionate developer with a love for clean design and creative problem-solving.</p>
+</div>
+<section class="skillsBox">
+  <h2>🚀 My Skills</h2>
+  <div class="buttonGrid">
+    <button>HTML</button>
+    <button>CSS</button>
+    <button>JavaScript</button>
+    <button>Sigma</button>
+    <button>Baseball skill</button>
+  </div>
+</section>
+
+
+
+<header> <button id="darkModeToggle">🌙 Toggle Dark Mode</button>
+
+</header>
+
+
+<script>
+  const toggleBtn = document.getElementById('darkModeToggle');
+
+  toggleBtn.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+  });
+</script>
+
+
+<section id="gapBox">
+  <div class="box-content">
+    <h2>About Me</h2>
+    <p>I’m a passionate developer with a love for clean design and creative problem-solving.</p>
+  </div>
+</section>
+
+
+
+<script>
+  const surprises = [
+    "🎉 You're officially legendary today!",
+    "🎂 Fun Fact: You share a birthday with Beyoncé!",
+    "🎈 Dare: Dance like nobody's watching for 30 seconds.",
+    "🎁 You deserve cake, pizza, and a nap. In that order.",
+    "🎊 Random: The word 'birthday' comes from Old English 'byrddæg'.",
+    "🔥 Secret: You’re aging like fine code—flawless and powerful."
+  ];
+
+  function revealSurprise() {
+    const surpriseDiv = document.getElementById('surprise');
+    const randomIndex = Math.floor(Math.random() * surprises.length);
+    surpriseDiv.textContent = surprises[randomIndex];
+  }
+</script>
+
+
+
+
+<script>
+  const canvas = document.getElementById("confettiCanvas");
+  const ctx = canvas.getContext("2d");
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  let confetti = [];
+
+  function launchConfetti() {
+    for (let i = 0; i < 150; i++) {
+      confetti.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height - canvas.height,
+        r: Math.random() * 6 + 4,
+        d: Math.random() * 10 + 5,
+        color: `hsl(${Math.random() * 360}, 100%, 50%)`
+      });
+    }
+  }
+
+  function drawConfetti() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    confetti.forEach((c, i) => {
+      ctx.beginPath();
+      ctx.arc(c.x, c.y, c.r, 0, Math.PI * 2);
+      ctx.fillStyle = c.color;
+      ctx.fill();
+      c.y += c.d;
+      if (c.y > canvas.height) {
+        c.y = -10;
+        c.x = Math.random() * canvas.width;
+      }
+    });
+    requestAnimationFrame(drawConfetti);
+  }
+
+  drawConfetti(); // Starts animation loop
+
+  // Optional: Trigger confetti when countdown hits zero
+  // Add this inside your countdown function:
+  // if (diff <= 0) {
+  //   countdownDiv.innerHTML = "🎉 It's your birthday! 🎉";
+  //   launchConfetti();
+  // }
+</script>
+
+
+
+<button onclick="launchConfetti()">🎊 Launch Confetti</button>
+
+<section id="cake">
+  🎂🕯️
+</section>
+
+
+
+<script>
+  const cake = document.getElementById("cake");
+  cake.addEventListener("click", () => {
+    cake.innerHTML = "🎂💨"; // Candle blown out
+    cake.style.animation = "none";
+  });
+</script>
+
+
+
+<div class="section about-me">
+  <!-- About Me content -->
+</div>
+
+<div class="section skills">
+  <!-- Skills content -->
+</div>
+
+<div class="section birthday-countdown">
+  <!-- Countdown content -->
+</div>
+
+<div class="section mystery-box">
+  <!-- Mystery Box content -->
+</div>
+
+<div class="section contact">
+  <!-- Contact info -->
+</div>
+
+
+
+<body>
+  <div class="section about-me">
+    <h2>About Me</h2>
+    <p>I wanted to be a Major League Baseball player...</p>
+  </div>
+
+  <div class="section skills">
+    <h2>Skills</h2>
+    <ul>
+      <li>HTML</li>
+      <li>CSS</li>
+      <li>JavaScript</li>
+    </ul>
+  </div>
+
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
