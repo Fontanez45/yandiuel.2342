@@ -145,6 +145,10 @@
     });
   });
 
+  document.getElementById('email').addEventListener('input', () => {
+    generatedCode = '';
+  });
+
   function updateProgressBar(step) {
     const percent = step * 25;
     const bar = document.getElementById('progressBar');
@@ -187,6 +191,10 @@
     generatedCode = [...Array(6)].map(() => Math.floor(Math.random() * 10)).join('');
     console.log("Generated Code:", generatedCode);
 
+    for (let i = 1; i <= 6; i++) {
+      document.getElementById(`code${i}`).value = '';
+    }
+
     emailjs.send("service_jcnnkfj", "template_j9m1xuc", {
       to_email: email,
       code: generatedCode
@@ -204,15 +212,15 @@
     alertBox.textContent = message;
     alertBox.style.display = 'block';
     setTimeout(() => {
-      alertBox.style.display = 'none';
+      alertBox.style.display
+
+            alertBox.style.display = 'none';
     }, 4000);
   }
 
   document.querySelectorAll('.code-box').forEach((box, index, boxes) => {
     box.addEventListener('input', () => {
-      if (box.value.length === 1 && index < boxes
-
-      .length - 1) {
+      if (box.value.length === 1 && index < boxes.length - 1) {
         boxes[index + 1].focus();
       }
     });
@@ -271,4 +279,139 @@
 </body>
 </html>
 
+
+<!-- ... your existing HTML above remains unchanged ... -->
+
+<script>
+  let currentStep = 1;
+  let generatedCode = '';
+
+  window.onload = () => {
+    ['name', 'email', 'date', 'time', 'message'].forEach(id => {
+      const saved = localStorage.getItem(id);
+      if (saved) document.getElementById(id).value = saved;
+    });
+  };
+
+  document.querySelectorAll('input, textarea').forEach(el => {
+    el.addEventListener('input', () => {
+      localStorage.setItem(el.id, el.value);
+    });
+  });
+
+  document.getElementById('email').addEventListener('input', () => {
+    generatedCode = '';
+  });
+
+  function updateProgressBar(step) {
+    const percent = step * 25;
+    const bar = document.getElementById('progressBar');
+    bar.style.width = percent + '%';
+    bar.textContent = `Step ${step} of 4`;
+  }
+
+  function nextStep(step) {
+    if (step === 1) {
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      if (!name || !email) {
+        alert('Please enter your name and email.');
+        return;
+      }
+    }
+
+    if (step === 3) {
+      const date = document.getElementById('date').value;
+      const time = document.getElementById('time').value;
+      if (!date || !time) {
+        alert('Please select a date and time.');
+        return;
+      }
+    }
+
+    document.getElementById(`step${step}`).classList.remove('active');
+    currentStep++;
+    document.getElementById(`step${currentStep}`).classList.add('active');
+    updateProgressBar(currentStep);
+  }
+
+  function sendVerificationCode() {
+    const email = document.getElementById('email').value.trim();
+    if (!email) {
+      showAlert('Please enter your email first.', 'danger');
+      return;
+    }
+
+    generatedCode = [...Array(6)].map(() => Math.floor(Math.random() * 10)).join('');
+    console.log("Generated Code:", generatedCode);
+
+    for (let i = 1; i <= 6; i++) {
+      document.getElementById(`code${i}`).value = '';
+    }
+
+    emailjs.send("service_jcnnkfj", "template_j9m1xuc", {
+      to_email: email,
+      code: generatedCode
+    }).then(() => {
+      showAlert('✅ Verification code sent to your email!', 'success');
+    }).catch(error => {
+      console.error("EmailJS error:", error);
+      showAlert('❌ Failed to send code. Check your EmailJS setup.', 'danger');
+    });
+  }
+
+  function showAlert(message, type) {
+    const alertBox = document.getElementById('codeSentAlert');
+    alertBox.className = `alert alert-${type} text-center`;
+    alertBox.textContent = message;
+    alertBox.style.display = 'block';
+    setTimeout(() => {
+      alertBox.style.display = 'none';
+    }, 4000);
+  }
+
+  document.querySelectorAll('.code-box').forEach((box, index, boxes) => {
+    box.addEventListener('input', () => {
+      if (box.value.length === 1 && index < boxes.length - 1) {
+        boxes[index + 1].focus();
+      }
+    });
+    box.addEventListener('keydown', (e) => {
+      if (e.key === 'Backspace' && box.value === '' && index > 0) {
+        boxes[index - 1].focus();
+      }
+    });
+  });
+
+  function verifyCode() {
+    const enteredCode = [...Array(6)].map((_, i) => document.getElementById(`code${i+1}`).value).join('');
+    console.log("Entered Code:", enteredCode);
+
+    if (enteredCode !== generatedCode) {
+      showAlert('Incorrect verification code.', 'danger');
+      return;
+    }
+
+    document.getElementById('step2').classList.remove('active');
+    currentStep++;
+    document.getElementById(`step${currentStep}`).classList.add('active');
+    updateProgressBar(currentStep);
+  }
+
+  const form = document.getElementById('bookingForm');
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    form.style.display = 'none';
+    document.getElementById('spinner').style.display = 'block';
+
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+
+    // ✅ Replace this URL with your actual SheetDB API URL
+  fetch('https://sheetdb.io/api/v1/7quoyb82sk644', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ data })
+})
 

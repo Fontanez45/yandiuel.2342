@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html> 
- 
+ <script>
+  // Detect iPhone using the user agent
+  if (/iPhone/i.test(navigator.userAgent)) {
+    window.location.href = "iphone.html"; // Replace with your iPhone-specific page
+  }
+</script>
+
 <head> 
     <meta charset ="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
