@@ -67,44 +67,13 @@ prevBtn.addEventListener('click', function () {
   }
   showPerson(currentItem);
 })
- 
-let score = 0;
-let speed = 2000;
 
-const jet = document.getElementById("jet");
-const scoreDisplay = document.getElementById("score");
 
-function moveJet() {
-  const gameBox = document.getElementById("jetGame");
-  const maxX = gameBox.clientWidth - jet.clientWidth;
-  const maxY = gameBox.clientHeight - jet.clientHeight;
 
-  const x = Math.random() * maxX;
-  const y = Math.random() * maxY;
 
-  jet.style.left = `${x}px`;
-  jet.style.top = `${y}px`;
-}
 
-function updateGame() {
-  moveJet();
-  setTimeout(updateGame, speed);
-}
 
-jet.addEventListener("click", () => {
-  score++;
-  scoreDisplay.textContent = score;
 
-  if (score % 5 === 0 && speed > 500) {
-    speed -= 200; // Increase speed every 5 points
-  }
-
-  if (score === 10) {
-    launchConfetti(); // 🎉 Trigger confetti
-  }
-});
-
-updateGame();
 
 
 

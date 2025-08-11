@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Send Code to Email</title>
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script>
+    emailjs.init("tDSGk6MIKYSmpNgX7"); // Replace with your EmailJS public key
+  </script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      padding: 40px;
+    }
+    .container {
+      max-width: 400px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    input, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      font-size: 16px;
+    }
+    button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>📧 Send Verification Code</h2>
+  <input type="email" id="email" placeholder="Enter your email" required>
+  <button onclick="sendCode()">Send Code</button>
+</div>
+
+<script>
+  function sendCode() {
+    const email = document.getElementById('email').value;
+    if (!email) return alert("Please enter a valid email.");
+
+    const code = Math.floor(100000 + Math.random() * 900000).toString();
+
+    emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
+      to_email: email,
+      code: code
+    }).then(() => {
+      alert("✅ Code sent to " + email);
+    }).catch(error => {
+      console.error("EmailJS error:", error);
+      alert("❌ Failed to send code. Check your EmailJS setup.");
+    });
+  }
+</script>
+
+</body>
+</html>
